@@ -1,12 +1,12 @@
 #library(ggplot2)
-library(lpSolve)
+#library(lpSolve)
 library(lpSolveAPI)
 #Legenda:
 # toÄke...X
 # utezi...omega
 # K...stevilo gnezd
 # zeljene.velikosti...K
-# vsota.utezi = vsota.Kí»º
+# vsota.utezi = vsota.Kï¿½ï¿½ï¿½
 
 xkoordinate <- runif(125, 1.3, 20.3)
 ykoordinate <- rnorm(125, mean = 15, sd = 10)
@@ -37,7 +37,7 @@ funk <- function(ksi, utezi, tocke, centri){
   vsota <- 0
   for(i in 1:k){
    for(j in 1:m){
-     vsota <- vsoza + ksi[i][j] * utezi[j] * razdalija(tocke[j], center[i])
+     vsota <- vsota + ksi[i][j] * utezi[j] * razdalija(tocke[j], center[i])
    }
   } 
   return(vsota)
@@ -62,13 +62,14 @@ f.obj <- c(utezi,-zeljene.velikosti)
 f.con <- matrix(0, nrow = m*k, ncol = m+k)
 for(i in 1:k){
   for(j in 1:m){
-    f.con[(i-1)*m + j,i] <- -1
-    f.con[(i-1)*m + j,k+j] <- 1
+    f.con[(i-1)*m + j,m+i] <- -1
+    f.con[(i-1)*m + j,j] <- 1
   }
 }
   
 #f.con <- matrix(c(1,-1),nrow = m*k, ncol = 2, byrow = TRUE)
 f.dir <- rep("<=", k*m)
+
 f.rhs <- c()
 for(i in 1:k){
   for(j in  1:m){
@@ -84,25 +85,28 @@ for (i in 1:(m+k)){
   set.column(lprec, i, f.con[,i])
 }
 
-set.objfn(lprec,-f.obj)
+set.objfn(lprec,f.obj)
 set.constr.type(lprec, f.dir)
 set.rhs(lprec, f.rhs)
 set.bounds(lprec, lower = rep(0,m+k))
+lp.control(lprec,sense='max')
 
 
 
 solve(lprec)
-get.variables(lprec)
+resitve <- get.variables(lprec)
 
 write.lp(lprec, "lpfilename.lp", "lp")
-get.dual.solution(lprec)
+seznam.resitev <- list("eta" = resitve[1:length(utezi)], "mu" = res[length(utezi)+1:length(zeljene.velikosti)])
+#get.dual.solution(lprec)
+
 
 #####################################################################
 
 f.obj1 <- c()
 for(i in 1:k){
   for(j in 1:m){
-    f.obj1[(i-1)*m + j] <- razdalija(centri[i,], tocke[j,])
+    f.obj1[(i-1)*m + j] <- razdalija(centri[i,], tocke[j,])*utezi[j]
   }
 }
 
