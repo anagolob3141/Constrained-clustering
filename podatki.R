@@ -6,7 +6,7 @@ library(lpSolveAPI)
 # utezi...omega
 # K...stevilo gnezd
 # zeljene.velikosti...K
-# vsota.utezi = vsota.K���
+# vsota.utezi = vsota.K
 
 xkoordinate <- runif(125, 1.3, 20.3)
 ykoordinate <- rnorm(125, mean = 15, sd = 10)
@@ -27,7 +27,7 @@ vsota.utezi <- sum(utezi)
 zeljene.velikosti <- rep(vsota.utezi/K, K)
 
 razdalija <- function(tocka1, tocka2){
-  norma <- ((tocka1[1] - tocka2[1])^2 + (tocka1[2] - tocka2[2])^2)^(1/2)
+  norma <- ((tocka1[1] - tocka2[1])^2 + (tocka1[2] - tocka2[2])^2)
   return(norma)
 }
 
@@ -96,8 +96,8 @@ lp.control(lprec,sense='max')
 solve(lprec)
 resitve <- get.variables(lprec)
 
-write.lp(lprec, "lpfilename.lp", "lp")
-seznam.resitev <- list("eta" = resitve[1:length(utezi)], "mu" = res[length(utezi)+1:length(zeljene.velikosti)])
+write.lp(lprec, "prova.lp", "lp") # v tej datoteki lahko pogledas nastavljen linearni program
+seznam.resitev <- list("eta" = resitve[1:length(utezi)], "mu" = resitve[length(utezi)+1:length(zeljene.velikosti)])
 #get.dual.solution(lprec)
 
 
@@ -138,9 +138,10 @@ for (i in 1:(m*k)){
 set.objfn(lprec1,f.obj1)
 set.constr.type(lprec1, f.dir1)
 set.rhs(lprec1, f.rhs1)
+#set.type(lprec1, 1:(m*k), "binary")
 set.bounds(lprec1, lower = rep(0,m*k))
 
-write.lp(lprec1, "lpfilename1.lp", "lp")
+write.lp(lprec1, "prova1.lp", "lp") # v tej datoteki lahko pogledas nastavljen linearni program
 solve(lprec1)
 resitve <- get.variables(lprec1)
 
