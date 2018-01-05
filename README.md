@@ -12,7 +12,7 @@ Algoritem je uporabljen na dveh eksperimentih:
 
 V prvem eksperimentu rešujemo problem oblikovanja volilnih enote. Zanima nas, kako razčleniti notranje območje države na posamezne volilne okraje. Pri tem zahtevamo, da okraji pokrivajo skoraj enake populacije volivcev in imajo »razumno« obliko. (Nahaja se v datoteki eksperiment_volitve.R.)
 
-V drugem eksperimentu imamo podatke o stanovanjih, ki se prodajajo v okolici Ljubljane. Glede na njihove lastnosti jih želimo razdeliti v gruče, tako da bo vsaka gruča vsebovala stanovanja s čim bolj podobnimi lastnostmi. (Nahaja se v datoteki eksperimentStanovanja.R.)
+V drugem eksperimentu imamo podatke o stanovanjih, ki se prodajajo v okolici Ljubljane. Glede na njihove lastnosti jih želimo razdeliti v gruče, tako da bo vsaka gruča vsebovala stanovanja s čim bolj podobnimi lastnostmi. (Nahaja se v datoteki eksperimentStanovanja.R, ter stanovanjaShiny.R.)
 
 Več si lahko preberete v poročilu (datoteka porocilo.Rmd).
 
