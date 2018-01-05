@@ -9,7 +9,7 @@ library(lpSolveAPI)
 # utezi...vektor z utezmi na posameznih točkah (dimenzije m),
 # norme...vektor norm (dimenzije k), ki definirajo razdalijo za posamezno gručo.
 
-Linearni.program <- function(tocke, centri, zeljene.velikosti, utezi, norme){
+Linearni.program.volitve <- function(tocke, centri, zeljene.velikosti, utezi, norme){
   
   k <- length(zeljene.velikosti)
   m <- length(utezi)
@@ -18,7 +18,7 @@ Linearni.program <- function(tocke, centri, zeljene.velikosti, utezi, norme){
   f.obj1 <- c()
   for(i in 1:k){
     for(j in 1:m){
-      f.obj1[(i-1)*m + j] <- norme(centri[i,], tocke[j,]) * utezi[j]
+      f.obj1[(i-1)*m + j] <- (norme(centri[i,], tocke[j,])[i]) * utezi[j]
     }
   }
   
