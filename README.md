@@ -14,11 +14,11 @@ V prvem eksperimentu rešujemo problem oblikovanja volilnih enote. Zanima nas, k
 
 V drugem eksperimentu imamo podatke o stanovanjih, ki se prodajajo v okolici Ljubljane. Glede na njihove lastnosti jih želimo razdeliti v gruče, tako da bo vsaka gruča vsebovala stanovanja s čim bolj podobnimi lastnostmi. (Nahaja se v datoteki eksperimentStanovanja.R, ter stanovanjaShiny.R.)
 
-Več si lahko preberete v poročilu (datoteka porocilo.Rmd).
+Več si lahko preberete v poročilu (datoteka porocilo_golob_durcik.pdf).
 
 
 ### Napotki za uporabo:
-* Poročilo projekta se nahaja v datoteki porocilo.Rmd.
+* Poročilo projekta se nahaja v datoteki porocilo_golob_durcik.Rmd.
 * Algoritem za reševanje lineatnega programa, ki reši problem se nahaja v datoteki LinearniProgram.R.
 * V mapah z imenoma eksperiment_volitve, ter eksperimentStanovanja se nahajata problema, ki smo jih reševali z zgornjim algoritmom.
 * Rezultati eksperimenta volilnih okrajev, ter opis obeh problemov je zapisan v poročilu.
